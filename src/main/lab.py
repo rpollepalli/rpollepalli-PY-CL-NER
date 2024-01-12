@@ -13,10 +13,15 @@ We'll be using NLTK's ne_chunk function to detect named entities.
 from nltk import ne_chunk
 from nltk.tag import pos_tag
 from nltk.tokenize import word_tokenize
+import nltk
 
 def sampleNER():    
     ner_text = """
-    John Doe, a software engineer at ACME Corporation, recently attended a conference in New York City on January 15-17, 2023. The event, organized by Tech Innovations Inc., focused on artificial intelligence and machine learning. During the conference, John had the opportunity to network with professionals from Google, Microsoft, and other leading tech companies.
+    John Doe, a software engineer at ACME Corporation, 
+    recently attended a conference in New York City on January 15-17, 2023. 
+    The event, organized by Tech Innovations Inc.,
+     focused on artificial intelligence and machine learning.
+      During the conference, John had the opportunity to network with professionals from Google, Microsoft, and other leading tech companies.
     """
 
     tokens = word_tokenize(ner_text)
@@ -31,15 +36,26 @@ def sampleNER():
     # result.draw() #this will open a new window with the tree rendering
 
 """
-Create your own text that includes mentions of named entities of type PERSON and ORGANIZATION and complete the following function to recognize Named Entities for your text. The test will look for the mention of PERSON and ORGANIZATION type named entities. 
+Create your own text that includes mentions of named entities of type PERSON and ORGANIZATION 
+and complete the following function to recognize Named Entities for your text. 
+The test will look for the mention of PERSON and ORGANIZATION type named entities. 
 """
 def nerExercise():    
-    ner_text = ""
+    nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
+    nltk.download('maxent_ne_chunker')
+    ner_text = "Elon Reeve Musk is the founder of Tesla Inc."
     #Tokenize text
+    tokens = word_tokenize(ner_text)
 
     # Tag tokens with POS
+    tokens = word_tokenize(ner_text)
+    print(tokens)
 
+    pos_tagged = pos_tag(tokens)
+    print(pos_tagged)
     # use ne_chunk to recognize NER
-    result = None
+    result = ne_chunk(pos_tagged)
+    
 
     return result
