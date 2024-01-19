@@ -42,12 +42,12 @@ The test will look for the mention of PERSON and ORGANIZATION type named entitie
 """
 def nerExercise():    
     nltk.download('punkt')
+    nltk.download('words')
     nltk.download('averaged_perceptron_tagger')
     nltk.download('maxent_ne_chunker')
-    ner_text = "Elon Reeve Musk is the founder of Tesla Inc."
-    #Tokenize text
-    tokens = word_tokenize(ner_text)
 
+    ner_text = "Elon Reeve Musk is the founder of Microsoft"
+    
     # Tag tokens with POS
     tokens = word_tokenize(ner_text)
     print(tokens)
